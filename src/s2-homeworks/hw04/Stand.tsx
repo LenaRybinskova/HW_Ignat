@@ -3,6 +3,7 @@ import s from './Stand.module.css'
 import SuperInputText from './common/c1-SuperInputText/SuperInputText'
 import SuperCheckbox from './common/c3-SuperCheckbox/SuperCheckbox'
 import SuperButton from './common/c2-SuperButton/SuperButton'
+import {log} from 'util';
 
 const Stand = () => {
     const [stateForAllInputs, setValue] = useState<string>('')
@@ -80,7 +81,8 @@ const Stand = () => {
                     <SuperCheckbox
                         id={'hw4-super-checkbox-like-old'}
                         checked={stateForAllCheckboxes}
-                        onChange={(e) => setChecked(e.currentTarget.checked)}
+                       /* onChange={(e) =>setChecked(e.currentTarget.checked)}*/
+
                     />
                 </div>
             </div>
