@@ -28,14 +28,7 @@ const Stand = () => {
                         value={stateForAllInputs}
                         onChangeText={setValue}
                         error={error}
-                        onEnter={() => {
-                            setError(
-                                stateForAllInputs.trim()
-                                    ? ''
-                                    : 'Error'
-                            )
-                            setValue('')
-                        }}
+                        onEnter={() => {setError(stateForAllInputs.trim() ? '' : 'Error');setValue('')}}
                     />
                 </div>
             </div>
@@ -65,10 +58,7 @@ const Stand = () => {
                 </div>
                 {/*задизэйбленная кнопка:*/}
                 <div>
-                    <SuperButton
-                        id={'hw4-super-button-secondary'}
-                        xType={'secondary'}
-                    >
+                    <SuperButton id={'hw4-super-button-secondary'} xType={'secondary'}>
                         secondary
                     </SuperButton>
                 </div>
