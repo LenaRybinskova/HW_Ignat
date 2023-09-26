@@ -10,8 +10,10 @@ type PropsType = {
 }
 
 export const Sidebar: FC<PropsType> = ({open, handleClose}) => {
-    const sidebarClass = s.sidebar
-        + (open ? ' ' + s.open : '')
+
+
+   const sidebarClass = s.sidebar
+        + (open ? '' + s.open : '')
     return (
         <>
             {/*затемнение справа от открытого меню*/}
@@ -19,11 +21,7 @@ export const Sidebar: FC<PropsType> = ({open, handleClose}) => {
 
             <aside className={sidebarClass}>
                 <button className={s.close} onClick={handleClose}>
-                    <img
-                        src={closeIcon}
-                        alt="close sidebar"
-                        id={'hw5-menu-close'}
-                    />
+                    <img src={closeIcon} alt="close sidebar" id={'hw5-menu-close'}/>
                 </button>
 
                 <nav id={'hw5-menu'} className={s.nav}>
