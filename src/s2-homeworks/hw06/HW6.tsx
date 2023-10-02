@@ -19,7 +19,7 @@ const HW6 = () => {
 
     }
     const restore = () => {
-        const s = restoreState('hw6-editable-span-value', value)
+        const s = restoreState('hw6-editable-span-value', "")
         setValue(s)
     }
 
