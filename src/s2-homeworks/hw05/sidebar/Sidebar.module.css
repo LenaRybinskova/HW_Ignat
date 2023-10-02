@@ -1,42 +1,63 @@
-/*это вылезающее слева-направо меню*/
 .sidebar {
-    width: 50%;
-    height: 100%;
-    background-color: #cc9c00;
-    position: fixed;
-    left: 0;
+    position: absolute;
+    top: 0;
+    left: -100vh;
+    z-index: 20;
 }
 
 .sidebar.open {
-    opacity: 0.5;
-
-}
-
-.background {
-    opacity: 0.5;
-}
-
-.nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    background-color: white;
+    height: 100vh;
+    width: 300px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    height: 100vh;
+    width: 1000%;
+    background-color: rgba(0, 0, 0, 0.84);
+}
+
+.nav {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 30px;
-    width: 114px;
-    height: 27px;
+    justify-content: space-around;
 }
 
 .nav a {
+    color: black;
+    margin-top: 25px;
+    font-size: 25px;
+    font-weight: bolder;
+    text-decoration: none;
 }
 
 .nav a:hover {
+    color: #0059B2;
+    text-decoration: #0059B2;
 }
 
 .nav a.active {
+    color: #58ACFF;
 }
 
 .close {
-
+    height: 30px;
+    width: 30px;
+    margin-right: 0;
 }
 
 .close img {

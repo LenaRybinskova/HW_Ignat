@@ -15,6 +15,7 @@ beforeEach(() => {
 
 test('filter by all', () => {
     const newState = filterAffairs(initialState, 'all')
+    newState.forEach(a => console.log(a.priority === 'low'))
     expect(newState.length).toBe(5)
 })
 test('filter by high', () => {
@@ -29,3 +30,4 @@ test('filter by low', () => {
     const newState = filterAffairs(initialState, 'low')
     expect(newState.length).toBe(2)
 })
+

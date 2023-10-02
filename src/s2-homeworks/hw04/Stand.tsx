@@ -3,7 +3,7 @@ import s from './Stand.module.css'
 import SuperInputText from './common/c1-SuperInputText/SuperInputText'
 import SuperCheckbox from './common/c3-SuperCheckbox/SuperCheckbox'
 import SuperButton from './common/c2-SuperButton/SuperButton'
-import {log} from 'util';
+import {log} from "util";
 
 const Stand = () => {
     const [stateForAllInputs, setValue] = useState<string>('')
@@ -29,7 +29,10 @@ const Stand = () => {
                         value={stateForAllInputs}
                         onChangeText={setValue}
                         error={error}
-                        onEnter={() => {setError(stateForAllInputs.trim() ? '' : 'Error');setValue('')}}
+                        onEnter={() => {
+                            setError(stateForAllInputs.trim() ? '' : 'Error')
+                            setValue('')
+                        }}
                     />
                 </div>
             </div>
@@ -37,13 +40,16 @@ const Stand = () => {
             <div className={s.buttons}>
                 {/*обычная кнопка:*/}
                 <div>
-                    <SuperButton id={'hw4-super-button-default'}>
+                    <SuperButton
+                        id={'hw4-super-button-default'}>
                         default
                     </SuperButton>
                 </div>
                 {/*красная кнопка:*/}
                 <div>
-                    <SuperButton id={'hw4-super-button-red'} xType={'red'}>
+                    <SuperButton
+                        id={'hw4-super-button-red'}
+                        xType={'red'}>
                         red
                     </SuperButton>
                 </div>
@@ -59,7 +65,10 @@ const Stand = () => {
                 </div>
                 {/*задизэйбленная кнопка:*/}
                 <div>
-                    <SuperButton id={'hw4-super-button-secondary'} xType={'secondary'}>
+                    <SuperButton
+                        id={'hw4-super-button-secondary'}
+                        xType={'secondary'}
+                    >
                         secondary
                     </SuperButton>
                 </div>
@@ -82,7 +91,6 @@ const Stand = () => {
                         id={'hw4-super-checkbox-like-old'}
                         checked={stateForAllCheckboxes}
                         onChangeChecked={setChecked}
-
                     />
                 </div>
             </div>

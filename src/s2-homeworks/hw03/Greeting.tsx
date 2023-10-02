@@ -1,11 +1,12 @@
 import React, {ChangeEvent, KeyboardEvent} from 'react'
 import s from './Greeting.module.css'
+import {isDisabled} from "@testing-library/user-event/dist/utils";
 
 type GreetingPropsType = {
     name: string // need to fix any
-    setNameCallback: (e: React.ChangeEvent<HTMLInputElement>) => void // need to fix any
-    addUser: () => void // need to fix any
-    onBlur: () => void // need to fix any
+    setNameCallback: (e: React.ChangeEvent<HTMLInputElement>) =>void // need to fix any
+    addUser: () =>void // need to fix any
+    onBlur: () =>void // need to fix any
     onEnter: (e: React.KeyboardEvent<HTMLInputElement>) => void // need to fix any
     error: string // need to fix any
     totalUsers: number // need to fix any
@@ -25,8 +26,8 @@ const Greeting: React.FC<GreetingPropsType> = (
         lastUserName,
     } // деструктуризация пропсов
 ) => {
-    const inputClass = error ? s.errorInput : s.input // need to fix with (?:)
-
+    const inputClass = error.trim() ? s.errorInput: s.input // need to fix with (? s.errorInput : s.input)
+    console.log(error)
     return (
         <div id={'hw3-form'} className={s.greetingForm}>
             <div className={s.text}>
@@ -38,24 +39,21 @@ const Greeting: React.FC<GreetingPropsType> = (
 
             <div className={s.inputAndButtonContainer}>
                 <div>
-                    <input
-                        id={'hw3-input'}
-                        value={name}
-                        onChange={setNameCallback}
-                        className={inputClass}
-                        onKeyDown={onEnter}
-                        onBlur={onBlur}
+                    <input id={'hw3-input'} value={name} onChange={setNameCallback} className={inputClass} onKeyDown={onEnter} onBlur={onBlur}
                     />
                     <div id={'hw3-error'} className={s.error}>
                         {error}
                     </div>
                 </div>
 
-                <button
-                    id={'hw3-button'}
-                    onClick={addUser}
-                    className={s.button}
-                    disabled={!name.trim()}
+                <button id={'hw3-button'} onClick={addUser}
+                        className={s.button}
+                        disabled={!name.trim()}
+                    // ДАВАЙТЕ ПРОСЛЕДИМ БОЕВОЙ ПУТЬ addUser:
+                    // ОТСЮДА ОН ВСПЛЫВЕТ В КОМПОНЕНТЕ GreetingContainer И ВЫЗОВЕТ pureAddUser->
+                    // А В pureAddUser ЛИБО ВЫДАСТ ОШИБКУ (ЕСЛИ ПУСТОЙ name) ИЛИ ЗАПУТСИТ addUserCallback->
+                    // КОТОРЫЙ ВСПЛЫВЕТ В КОМПОНЕНТЕ <HW3/> И ВЫЗОВЕТ pureAddUserCallback->
+                    // КОТОРЫЙ СОЗДАСТ НОВЫЙ ОБЪЕКТ И ЗАСЕТАЕТ ЕГО В users НЕ ПОТЕРЯВ И СТАРЫХ ЮЗЕРОВ
                 >
                     add
                 </button>

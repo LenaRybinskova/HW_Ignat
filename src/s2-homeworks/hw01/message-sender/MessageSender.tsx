@@ -1,22 +1,19 @@
 import React, {useEffect, useRef, useState} from 'react'
 import { message0 } from '../HW1'
 import s from './MessageSender.module.css'
-import {log} from 'util';
 
 // компонента, которая тестирует вашу компоненту (не изменять, any не трогать)
 const MessageSender = (props: any) => {
     const M = props.M
     const textareaRef = useRef<HTMLTextAreaElement | null>(null);
     const [messages, setMessages] = useState<any[]>([])
-
     const [text, setText] = useState<any>('')
-    console.log(text)
+
     const onChange = (e: any) => {
         setText(e.currentTarget.value)
     }
 
     useEffect(() => {
-        console.log(textareaRef?.current)
         if (textareaRef?.current) {
             textareaRef.current.style.height = '0px'
             textareaRef.current.style.height = textareaRef.current.scrollHeight + 'px'
@@ -61,7 +58,12 @@ const MessageSender = (props: any) => {
                     onChange={onChange}
                     onKeyDown={onKeyDown}
                 />
-                <button id={'hw1-button'} className={s.button} onClick={addMessage}>
+                <button
+                    id={'hw1-button'}
+                    className={s.button}
+
+                    onClick={addMessage}
+                >
                     {/*текст кнопки могут изменить студенты*/}
                     Send
                     {/**/}

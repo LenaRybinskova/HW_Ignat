@@ -1,6 +1,6 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import SuperEditableSpan from './common/c4-SuperEditableSpan/SuperEditableSpan'
-import {restoreState, saveState} from './localStorage/localStorage'
+import { restoreState, saveState } from './localStorage/localStorage'
 import s2 from '../../s1-main/App.module.css'
 import SuperButton from '../hw04/common/c2-SuperButton/SuperButton'
 import s from './HW6.module.css'
@@ -16,11 +16,15 @@ const HW6 = () => {
 
     const save = () => {
         saveState<string>('hw6-editable-span-value', value)
-
     }
     const restore = () => {
-        const s = restoreState('hw6-editable-span-value', "")
-        setValue(s)
+        // делают студенты
+        let valueAsString = localStorage.getItem('hw6-editable-span-value')
+        if(valueAsString){
+            let restoreValue = JSON.parse(valueAsString)
+            setValue(restoreValue)
+        }
+
     }
 
     return (
