@@ -59,25 +59,13 @@ const HW8 = () => {
             <div className={s2.hw}>
                 <div className={s.container}>
                     <div className={s.buttonsContainer}>
-                        <SuperButton
-                            id={'hw8-button-up'}
-                            onClick={sortUp}
-                            xType={currentSort === 'up' ? '' : 'secondary'}
-                        >
+                        <SuperButton id={'hw8-button-up'} onClick={sortUp} xType={currentSort === 'up' ? '' : 'secondary'}>
                             Sort up
                         </SuperButton>
-                        <SuperButton
-                            id={'hw8-button-down'}
-                            onClick={sortDown}
-                            xType={currentSort === 'down' ? '' : 'secondary'}
-                        >
+                        <SuperButton id={'hw8-button-down'} onClick={sortDown} xType={currentSort === 'down' ? '' : 'secondary'}>
                             Sort down
                         </SuperButton>
-                        <SuperButton
-                            id={'hw8-button-18'}
-                            onClick={check18}
-                            xType={currentSort === '18' ? '' : 'secondary'}
-                        >
+                        <SuperButton id={'hw8-button-18'} onClick={check18} xType={currentSort === '18' ? '' : 'secondary'}>
                             Check 18+
                         </SuperButton>
                     </div>
