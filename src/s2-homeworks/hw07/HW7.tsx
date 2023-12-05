@@ -28,20 +28,10 @@ const HW7 = () => {
             <div className={s2.hw}>
                 <div className={s.container}>
                     <div>
-                        <SuperSelect
-                            id={'hw7-super-select'}
-                            options={arr}
-                            value={value}
-                            onChangeOption={onChangeOption}
-                        />
+                        <SuperSelect id={'hw7-super-select'} options={arr} value={value} onChangeOption={onChangeOption}/>
                     </div>
                     <div>
-                        <SuperRadio
-                            id={'hw7-super-radio'}
-                            name={'hw7-radio'}
-                            options={arr}
-                            value={value}
-                            onChangeOption={onChangeOption}
+                        <SuperRadio id={'hw7-super-radio'} name={'hw7-radio'} options={arr} value={value} onChangeOption={onChangeOption}
                         />
                     </div>
                 </div>
