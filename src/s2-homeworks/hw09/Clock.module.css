@@ -1,14 +1,42 @@
 .buttonsContainer {
+/*    display: flex;
+    flex-direction: row;*/
+}
+
+.hw9-button-start {
+    border-radius: 3px;
+    padding: 5px 24px 5px 24px;
+    font-size: 14px;
+    background-color: rgba(0, 102, 204, 1);
+
 }
 
 .clock {
+    display: flex;
+    flex-direction: column;
+    font-weight: 400;
+    /*    font-size:20px;*/
+    line-height: 27px;
+    font-family: Montserrat;
+    font-size: 20px;
 }
 
 .watch {
+display: flex;
+    flex-direction: row;
 }
 
 .watch strong {
+    font-weight: 600;
 }
 
 .more {
+    display: flex;
+    flex-direction: row;
+    font-size: 16px;
+    width: 128px;
+    height: 20px;
+    color: rgba(0, 0, 0, 0.5);
+    font-weight: 400;
 }
+
