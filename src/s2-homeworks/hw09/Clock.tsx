@@ -10,9 +10,6 @@ function Clock() {
     const [date, setDate] = useState<Date>(new Date(restoreState('hw9-date', Date.now())))
     const [show, setShow] = useState<boolean>(false)
 
-
-
-
     const start = () => {
         stop()
         const timerId: number = window.setInterval(() => {
@@ -24,24 +21,22 @@ function Clock() {
 
     const stop = () => {
         clearInterval(timerId)
-        setTimerId(0)
-/*        saveState('hw9-date',date)*/
+/*        setTimerId(0)*/
     }
 
     const onMouseEnter = () => { // пишут студенты // показать дату если наведена мышка
-        console.log('onMouseEnter')
-/*        setDate(restoreState('hw9-date', date))*/
         setShow(true)
-
     }
 
     const onMouseLeave = () => { // пишут студенты // спрятать дату если мышка не наведена
-        console.log('onMouseLeave')
         setShow(false)
     }
 
-    const stringTime = new Intl.DateTimeFormat('ru', {hour: '2-digit', minute: '2-digit', second: '2-digit',}).format(date)
 
+    // IGNAT
+    // const stringTime = date?.toLocalTimeString() || <br/>
+    const stringTime = new Intl.DateTimeFormat('ru', {hour: '2-digit', minute: '2-digit', second: '2-digit',}).format(date)
+    // const stringDay = date?.toLocalDateString() || <br/>
     const stringDay = new Intl.DateTimeFormat('en-US', {weekday: 'long'}).format(date)
 
     const stringMonth = date.toLocaleString('en-US', { month: 'long' });
