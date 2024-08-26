@@ -29,26 +29,39 @@ const HW14 = () => {
     const [isLoading, setLoading] = useState(false)
     const [searchParams, setSearchParams] = useSearchParams()
     const [techs, setTechs] = useState<string[]>([])
+    const [timerId, setTimerId] = useState<any>()
 
     const sendQuery = (value: string) => {
+
         setLoading(true)
         getTechs(value)
             .then((res) => {
-                if(res && res.data){
+                if (res && res.data) {
                     setTechs(res.data.techs)
                     setLoading(false)
                 }
             })
     }
 
+
+
+    const onChangeTextCallback = (value: string) => {
+        if (timerId!=null) {
+            clearTimeout(timerId)
+        }
+        let temp = setTimeout(sendQuery, 1500,value)
+        setTimerId(temp)
+    }
+
     const onChangeText = (value: string) => {
         setFind(value)
-        setTimeout(sendQuery, 1500, value)
         // делает студент
         // добавить/заменить значение в квери урла
         // setSearchParams(
         setSearchParams({value})
+        onChangeTextCallback(value)
     }
+
 
     useEffect(() => {
         const params = Object.fromEntries(searchParams)
@@ -72,6 +85,7 @@ const HW14 = () => {
                     value={find}
                     onChangeText={onChangeText}
                     onDebouncedChange={sendQuery}
+
                 />
 
                 <div id={'hw14-loading'} className={s.loading}>
