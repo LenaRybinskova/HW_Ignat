@@ -78,8 +78,8 @@ const HW15 = () => {
             setCount(newCount)
         }
         setLoading(false)
-        setSearchParams({count:String(newCount), page:String(newPage)})
-
+        setSearchParams({ page: String(newPage), count: String(newCount), sort });
+        sendQuery({ page: newPage, count: newCount, sort });
 
 
         // setPage(
@@ -92,10 +92,10 @@ const HW15 = () => {
     }
 
     const onChangeSort = (newSort: string) => {
-        console.log("сортировка каунта")
         setLoading(true)
         setSort(newSort)
-        setSearchParams({sort:newSort})
+        setSearchParams({ page: '1', count: String(count), sort: newSort });
+        sendQuery({ page: 1, count, sort: newSort });
         setLoading(false)
         // setPage(1)
         // делает студент
@@ -111,11 +111,10 @@ const HW15 = () => {
 
     useEffect(() => {
         const params = Object.fromEntries(searchParams)
-        console.log("useEffect params:", params)
+                setPage(+params.page || 1)
+                setCount(+params.count || 4)
         sendQuery({page: params.page, count: params.count, sort})
-        /*        setPage(+params.page || 1)*/
-        /*        setCount(+params.count || 4)*/
-    }, [sort, page, count, searchParams])
+    }, [sort, searchParams])
 
     const mappedTechs = techs.map(t => (
         <div key={t.id} className={s.row}>
